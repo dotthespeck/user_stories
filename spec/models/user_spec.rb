@@ -1,5 +1,5 @@
 require 'rails_helper'
 
 RSpec.describe User do
-  pending "Add more to #{__FILE__}?"
+  it { should have_many :stories }
 end

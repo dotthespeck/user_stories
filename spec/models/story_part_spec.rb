@@ -10,6 +10,6 @@ RSpec.describe StoryPart do
   it { should have_valid(:category).when(Category.new) }
   it { should_not have_valid(:category).when(nil) }
 
-  it { should have_valid(:part_type).when(Part.new) }
+  it { should have_valid(:part_type).when(PartType.new) }
   it { should_not have_valid(:part_type).when(nil) }
 end
