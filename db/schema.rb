@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20150110162106) do
 
   # These are extensions that must be enabled in order to support this database
@@ -22,6 +21,24 @@ ActiveRecord::Schema.define(version: 20150110162106) do
   end
 
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
+
+  create_table "part_types", force: :cascade do |t|
+    t.string "name", null: false
+  end
+
+  create_table "parts", force: :cascade do |t|
+    t.string  "text",    null: false
+    t.integer "type_id", null: false
+  end
+
+  add_index "parts", ["text", "type_id"], name: "index_parts_on_text_and_type_id", unique: true, using: :btree
+
+  create_table "saved_stories", force: :cascade do |t|
+    t.string  "story",   null: false
+    t.integer "type_id", null: false
+  end
+
+  add_index "saved_stories", ["story"], name: "index_saved_stories_on_story", unique: true, using: :btree
 
   create_table "stories", force: :cascade do |t|
     t.string   "sentence",    null: false
@@ -42,6 +59,8 @@ ActiveRecord::Schema.define(version: 20150110162106) do
     t.string "name", null: false
   end
 
+  add_index "types", ["name"], name: "index_types_on_name", unique: true, using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -60,8 +79,11 @@ ActiveRecord::Schema.define(version: 20150110162106) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "work_phrases", force: :cascade do |t|
-    t.text "phrase"
+  create_table "votes", force: :cascade do |t|
+    t.integer "saved_story_id", null: false
+    t.string  "ip_address",     null: false
   end
+
+  add_index "votes", ["saved_story_id", "ip_address"], name: "index_votes_on_saved_story_id_and_ip_address", unique: true, using: :btree
 
 end

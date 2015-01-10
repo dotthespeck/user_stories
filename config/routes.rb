@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-=======
   root 'homes#index'
   devise_for :users
->>>>>>> d7b89eab0d849944116e6ae6f2bf8c142625b5af
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
