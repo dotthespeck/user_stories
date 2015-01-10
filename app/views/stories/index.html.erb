@@ -2,10 +2,10 @@
 
 <div class="large-12 columns">
   <ul>
-    <li><%= link_to "Give me something I can show my boss", category_path(@categories.find(2)) %></li>
-    <li><%= link_to "Give me a totally random user story", category_path(@categories.find(1)) %></li>
-    <li><%= link_to "Help me write the next hit pop song", category_path(@categories.find(4)) %></li>
-    <li><%= link_to "I need a user story for the Launch winter cohort", category_path(@categories.find(3)) %></li>
+    <li><%= link_to "Give me something I can show my boss", category_path(@categories.find_by(name: "Industry")) %></li>
+    <li><%= link_to "Give me a totally random user story", category_path(@categories.find_by(name: "General")) %></li>
+    <li><%= link_to "Help me write the next hit pop song", category_path(@categories.find_by(name: "Pop Songs")) %></li>
+    <li><%= link_to "I need a user story for the Launch winter cohort", category_path(@categories.find_by(name: "Launch")) %></li>
   </ul>
 </div>
 

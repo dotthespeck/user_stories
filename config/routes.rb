@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   resources :stories, only: [:index, :create, :new]
-  resources :category, only: [:show]
+  resources :categories, only: [:show]
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+   root 'stories#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
