@@ -33,5 +33,7 @@ class CategoriesController < ApplicationController
 
   def show
     @story = create_story(Category.find(params[:id]).name)
+    @category = Category.find(params[:id])
+    @heading = @category.name
   end
 end

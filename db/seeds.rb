@@ -28,7 +28,7 @@ CSV.foreach("public/lists/launch.csv") do |line|
     StoryPart.create!(piece: line.first, category: launch, part_type: phrase)
 end
 
-CSV.foreach("public/lists/work_line.csv") do |line|
+CSV.foreach("public/lists/work_phrases.csv") do |line|
     StoryPart.create!(piece: line.first, category: industry, part_type: noun)
 end
 
