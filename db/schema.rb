@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20150110162106) do
 
   # These are extensions that must be enabled in order to support this database
@@ -22,6 +21,10 @@ ActiveRecord::Schema.define(version: 20150110162106) do
   end
 
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
+
+  create_table "part_types", force: :cascade do |t|
+    t.string "name", null: false
+  end
 
   create_table "stories", force: :cascade do |t|
     t.string   "sentence",    null: false
@@ -36,10 +39,6 @@ ActiveRecord::Schema.define(version: 20150110162106) do
     t.string  "piece",        null: false
     t.integer "category_id",  null: false
     t.integer "part_type_id", null: false
-  end
-
-  create_table "types", force: :cascade do |t|
-    t.string "name", null: false
   end
 
   create_table "users", force: :cascade do |t|
