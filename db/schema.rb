@@ -60,4 +60,8 @@ ActiveRecord::Schema.define(version: 20150110171938) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "work_phrases", force: :cascade do |t|
+    t.text "phrase"
+  end
+
 end
