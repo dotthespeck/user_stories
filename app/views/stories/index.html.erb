@@ -11,28 +11,31 @@
 
 <div class="row">
   <h1>Best User Stories</h1>
-
-  <div class="large-12 columns" id="stories">
-    <div class="panel">
-      <div class="row">
-        <div class="medium-4 large-4 text-center columns"><div class="panel"><h3>Upvotes</h3></div></div>  <div class="panel"><h3>Story</h3></div>
-      </div>
-      <% @stories.each do |story| %>
-      <div class="row">
-
-        <div class="medium-4 large-4 text-center columns">
-        </div>
-        <div class="panel" id="story">
-          <p>
-            <%= story.sentence %>
-          </p>
-        </div>
-      </div>
-      <% end %>
-    </div>
+  <div class="small-6 text-center columns panel">
+      <h3>Upvotes</h3>
+  </div>
+  <div class="small-6 columns panel text-center" id="stories">
+    <h3>Story</h3>
   </div>
 </div>
-
-<!-- button to sort by newest -->
-<!-- make a variable change when you push the button,
-have a seperate peice of html that prints directly from the csv when you order by newest -->
+<% @stories.each do |story| %>
+  <div class="row panel">
+    <div class="small-6 text-center columns">
+      <%= form_for(:vote, url: votes_path) do |f| %>
+        <% if current_user %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+        <% else %>
+          <%= f.hidden_field :user_id, value: nil %>
+        <% end %>
+        <%= f.hidden_field :story_id, value: story.id %>
+        <%= f.submit "", id: "arrow" %>
+      <% end %>
+      <%= story.votes.size %>
+    </div>
+    <div class="small-6 text-center columns panel" id="story">
+      <p>
+        <%= story.sentence %>
+      </p>
+    </div>
+  </div>
+<% end %>

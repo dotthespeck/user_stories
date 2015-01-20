@@ -3,9 +3,9 @@ class AddVotes < ActiveRecord::Migration
     create_table :votes do |t|
       t.integer "story_id", null: false
       t.integer "user_id", null: false
-      t.integer "vote_tally", null: false
 
       t.timestamps
     end
+    add_index :votes, [:story_id, :user_id], unique: true
   end
 end

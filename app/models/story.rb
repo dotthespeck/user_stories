@@ -8,5 +8,4 @@ class Story < ActiveRecord::Base
     uniqueness: true,
     presence: true
   validates_presence_of :user
-
 end

@@ -5,6 +5,7 @@ class StoriesController < ApplicationController
   def index
     @stories = Story.all
     @categories = Category.all
+    @vote = Vote.new
   end
 
   def create
