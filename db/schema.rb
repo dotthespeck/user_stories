@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110234641) do
+ActiveRecord::Schema.define(version: 20150120225941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,11 +27,12 @@ ActiveRecord::Schema.define(version: 20150110234641) do
   end
 
   create_table "stories", force: :cascade do |t|
-    t.string   "sentence",    null: false
-    t.integer  "category_id", null: false
+    t.string   "sentence",                null: false
+    t.integer  "category_id",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.integer  "votes_count", default: 0
   end
 
   add_index "stories", ["sentence"], name: "index_stories_on_sentence", unique: true, using: :btree

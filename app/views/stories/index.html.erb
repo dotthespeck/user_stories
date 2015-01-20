@@ -30,7 +30,7 @@
         <%= f.hidden_field :story_id, value: story.id %>
         <%= f.submit "", id: "arrow" %>
       <% end %>
-      <%= story.votes.size %>
+      <%= story.votes_count %>
     </div>
     <div class="small-6 text-center columns panel" id="story">
       <p>

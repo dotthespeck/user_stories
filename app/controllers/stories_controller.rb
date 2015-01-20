@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create
 
   def index
-    @stories = Story.all
+    @stories = Story.order('votes_count DESC')
     @categories = Category.all
     @vote = Vote.new
   end
